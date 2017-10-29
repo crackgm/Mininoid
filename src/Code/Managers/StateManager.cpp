@@ -20,7 +20,9 @@ void StateManager::PushState(CState* state) {
 }
 
 void StateManager::PopState() {
+	CState *state = StateManager::StateStack.top();
 	StateManager::StateStack.pop();
+	delete state;
 }
 
 CState* StateManager::PeekState() {

@@ -18,6 +18,7 @@ CEntity::~CEntity() {
 	for (it = StateManager::PeekState()->EntityList.begin(); it != StateManager::PeekState()->EntityList.end(); ++it) {
 		if (*it == this) {
 			StateManager::PeekState()->EntityList.erase(it);
+
 			break;
 		}
 	}

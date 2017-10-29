@@ -8,6 +8,7 @@
 #include "OPaddle.h"
 #include <SFML/Graphics.hpp>
 #include "../Effects/ESpark.h"
+#include "../Effects/EOutFade.h"
 #include <ctime>
 OPaddle::OPaddle() {
 	Depth = -1;
@@ -33,6 +34,7 @@ void OPaddle::Update() {
 	}
 	shape.setPosition(shape.getPosition().x, 570+yanim);
 	colshape = shape.getGlobalBounds();
+	new EOutFade(50, shape);
 }
 
 void OPaddle::Render() {

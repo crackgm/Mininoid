@@ -17,6 +17,7 @@ private:
 	static map<char*,sf::Texture*> TextureMap;
 public:
 	static bool LoadTexture(char* path, char* texname);
+	static bool LoadTexture(char* path, char* texname, bool repeat);
 	static sf::Texture* GetTexture(char* name);
 };
 

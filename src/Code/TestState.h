@@ -24,6 +24,7 @@ class TestState: public CState {
 	OBlock *blocks[5][13];
 	OMargin *left, *right;
 	OBall *ball;
+	sf::RectangleShape shape;
 	void Create() {
 		paddle = new OPaddle();
 		for(int i = 0; i < 5; i++) {
@@ -33,14 +34,27 @@ class TestState: public CState {
 		left = new OMargin(0);
 		right = new OMargin(800-42.5);
 		ball = new OBall(400,500);
+		shape.setTexture(TextureManager::GetTexture("background"));
+		shape.setSize(sf::Vector2f(800,600));
+		shape.setPosition(sf::Vector2f(0,0));
+
 	}
 	void Update(){
 
 	}
 	void Render(){
-		FontManager::DrawText(GameManager::Variables::KeyboardInput, 10, 10, "Verdana", 10, sf::Color::White);
+		//FontManager::DrawText(GameManager::Variables::KeyboardInput, 10, 10, "Verdana", 10, sf::Color::White);
+		GameManager::Window->draw(shape);
 	}
-	virtual ~TestState() {};
+	virtual ~TestState() {
+		delete []blocks;
+		delete left;
+		delete right;
+		delete paddle;
+		delete ball;
+
+
+	};
 };
 
 #endif /* CODE_TESTSTATE_H_ */

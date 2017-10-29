@@ -20,3 +20,13 @@ bool TextureManager::LoadTexture(char* path, char* texname) {
 	TextureManager::TextureMap.insert(pair<char*,sf::Texture*>(texname,tex));
 	return res;
 }
+
+
+bool TextureManager::LoadTexture(char* path, char* texname, bool repeat) {
+	sf::Texture *tex = new sf::Texture();
+	bool res = tex->loadFromFile(path);
+	tex->setSmooth(true);
+	tex->setRepeated(repeat);
+	TextureManager::TextureMap.insert(pair<char*,sf::Texture*>(texname,tex));
+	return res;
+}

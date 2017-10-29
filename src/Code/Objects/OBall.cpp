@@ -9,6 +9,8 @@
 #include <math.h>
 #include <iostream>
 #include "../Effects/ESpark.h"
+#include "../Effects/EOutFade.h"
+#include "../Managers.h"
 using namespace std;
 
 OBall::OBall(float x, float y) {
@@ -56,6 +58,7 @@ void OBall::Update() {
 		this->x = 500;
 		ballvector = sf::Vector2f(cos(0.785398163)*speed,sin(0.785398163)*(-speed));
 	}
+	new EOutFade(20, shape);
 	colshape = shape.getGlobalBounds();
 }
 
@@ -65,17 +68,29 @@ void OBall::Render() {
 
 void OBall::HandleCollision(string name, CCollidable * other) {
 	if (name=="block") {
+		//system("clear");
+		//cout << "collision" << endl;
+		float cx = ballvector.x;
+		float cy = ballvector.y;
+
 		if(!collided) {
 			if(other->colshape.left < this->x && this->x < other->colshape.left+other->colshape.width) {
 				if(other->colshape.top+other->colshape.height < this->y || this->y < other->colshape.top) {
 					ballvector.y *= -1;
-					//cout << "ycol" <<endl;
+
+					//system("date");
+					//cout << "| ycol" <<endl;
 				}
-			} else
-				if(other->colshape.top+other->colshape.height >= this->y || this->y >= other->colshape.top) {
+			} else if(other->colshape.top+other->colshape.height >= this->y || this->y >= other->colshape.top) {
 					ballvector.x *= -1;
-					//cout << "xcol" << endl;
-				}
+					//system("date");
+					//cout << "| xcol" << endl;
+			}
+			if(cx == ballvector.x && cy == ballvector.y) {
+				//system("date");
+				//cout << " INSIDE" <<endl;
+			}
+
 			collided = true;
 			delete other;
 		}

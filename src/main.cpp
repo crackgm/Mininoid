@@ -12,6 +12,7 @@ int main()
     TextureManager::LoadTexture("Resources/texPaddle.png","paddle");
     TextureManager::LoadTexture("Resources/texBlock.png","block");
     TextureManager::LoadTexture("Resources/texBall.png","ball");
+    TextureManager::LoadTexture("Resources/background.jpg","background",true);
 
 
     FontManager::LoadFont("Verdana.ttf", "Verdana");
