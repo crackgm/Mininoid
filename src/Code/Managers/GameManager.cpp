@@ -10,6 +10,7 @@
 #include "../BaseClasses/CEntity.h"
 #include "../BaseClasses/CCollidable.h"
 #include "../BaseClasses/CEffect.h"
+#include "../Notification/NotificationManager.h"
 
 #include <iostream>
 #include <queue>
@@ -46,6 +47,7 @@ void GameManager::UpdateGame() {
 	            }
 	        }
 	        MouseManager::MouseUpdater();
+	        NotificationManager::Update();
 	        GameManager::HandleCollisions();
 	        GameManager::UpdateEntities();
 	        GameManager::RenderDrawables();
@@ -63,6 +65,7 @@ void GameManager::RenderDrawables() {
 		(*it)->Render();
 	}
 
+	NotificationManager::Render();
 
 	GameManager::Window->display();
 }

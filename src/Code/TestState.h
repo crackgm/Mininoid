@@ -18,14 +18,20 @@
 #include "Objects/OBlock.h"
 #include "Objects/OMargin.h"
 #include "Objects/OBall.h"
+#include "Notification/NotificationManager.h"
+#include "Objects/OComboDrawer.h"
 
 class TestState: public CState {
 	OPaddle *paddle;
 	OBlock *blocks[5][13];
 	OMargin *left, *right;
 	OBall *ball;
+	OComboDrawer *cdrawer;
 	sf::RectangleShape shape;
 	void Create() {
+		NotificationManager::Notify("Playing on: TestState", 10);
+
+
 		paddle = new OPaddle();
 		for(int i = 0; i < 5; i++) {
 			for(int j = 0; j < 13; j++)
@@ -34,6 +40,7 @@ class TestState: public CState {
 		left = new OMargin(0);
 		right = new OMargin(800-42.5);
 		ball = new OBall(400,500);
+		cdrawer = new OComboDrawer();
 		shape.setTexture(TextureManager::GetTexture("background"));
 		shape.setSize(sf::Vector2f(800,600));
 		shape.setPosition(sf::Vector2f(0,0));
@@ -43,8 +50,8 @@ class TestState: public CState {
 
 	}
 	void Render(){
-		//FontManager::DrawText(GameManager::Variables::KeyboardInput, 10, 10, "Verdana", 10, sf::Color::White);
 		GameManager::Window->draw(shape);
+		FontManager::DrawText(GameManager::Variables::KeyboardInput, 10, 10, "Verdana", 10, sf::Color::White);
 	}
 	virtual ~TestState() {
 		delete []blocks;
@@ -52,8 +59,7 @@ class TestState: public CState {
 		delete right;
 		delete paddle;
 		delete ball;
-
-
+		delete cdrawer;
 	};
 };
 

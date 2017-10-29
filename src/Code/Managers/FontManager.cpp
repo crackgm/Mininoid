@@ -20,7 +20,7 @@ bool FontManager::LoadFont(char* filename, char* fontname) {
 	FontManager::Fonts.insert(pair<char*,sf::Font*>(fontname,fnt));
 	return res;
 }
-void FontManager::DrawText(string text, float x, float y, char* font, int size, sf::Color &color) {
+void FontManager::DrawText(string text, float x, float y, char* font, int size, sf::Color color) {
 	sf::Text txt;
 	txt.setString(text);
 	txt.setFont(*FontManager::GetFont(font));

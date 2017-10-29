@@ -19,7 +19,7 @@ private:
 public:
 	static bool LoadFont(char* filename, char* fontname);
 	static sf::Font* GetFont(char* fontname);
-	static void DrawText(string text, float x, float y, char* font, int size, sf::Color &color);
+	static void DrawText(string text, float x, float y, char* font, int size, sf::Color color);
 };
 
 #endif /* CODE_MANAGERS_FONTMANAGER_H_ */

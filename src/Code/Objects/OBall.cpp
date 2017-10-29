@@ -8,6 +8,7 @@
 #include "OBall.h"
 #include <math.h>
 #include <iostream>
+#include "OComboDrawer.h"
 #include "../Effects/ESpark.h"
 #include "../Effects/EOutFade.h"
 #include "../Managers.h"
@@ -72,8 +73,9 @@ void OBall::HandleCollision(string name, CCollidable * other) {
 		//cout << "collision" << endl;
 		float cx = ballvector.x;
 		float cy = ballvector.y;
-
 		if(!collided) {
+
+			OComboDrawer::ComboCounter++;
 			if(other->colshape.left < this->x && this->x < other->colshape.left+other->colshape.width) {
 				if(other->colshape.top+other->colshape.height < this->y || this->y < other->colshape.top) {
 					ballvector.y *= -1;
@@ -95,6 +97,7 @@ void OBall::HandleCollision(string name, CCollidable * other) {
 			delete other;
 		}
 	} else if (name=="paddle") {
+		OComboDrawer::ComboCounter = 0;
 		float angle = atan2f(y - 570, x - MouseManager::GetX());
 		ballvector = sf::Vector2f(cos(angle)*speed, sin(angle)*speed);
 	}
