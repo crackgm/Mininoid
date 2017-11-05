@@ -20,6 +20,7 @@
 #include "Objects/OBall.h"
 #include "Notification/NotificationManager.h"
 #include "Objects/OComboDrawer.h"
+#include "Achievements/AchievementManager.h"
 
 class TestState: public CState {
 	OPaddle *paddle;
@@ -47,7 +48,7 @@ class TestState: public CState {
 
 	}
 	void Update(){
-
+		AchievementManager::ProgressAchievement("timeplayed1",1);
 	}
 	void Render(){
 		GameManager::Window->draw(shape);

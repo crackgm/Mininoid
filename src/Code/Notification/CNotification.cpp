@@ -8,7 +8,7 @@
 #include "CNotification.h"
 #include "../Managers.h"
 #include<SFML/Graphics.hpp>
-CNotification::CNotification(char* message, int time, sf::Color rectColor, sf::Color textColor) {
+CNotification::CNotification(string message, int time, sf::Color rectColor, sf::Color textColor) {
 	this->message = message;
 	this->time = time;
 	this->rectColor = rectColor;
@@ -41,7 +41,7 @@ bool CNotification::IsDone() {
 
 void CNotification::Render() {
 	GameManager::Window->draw(shape);
-	FontManager::DrawText(this->message, 20, this->GetY()+5, "Verdana", 10, this->textColor);
+	FontManager::DrawText(this->message.c_str(), 20, this->GetY()+5, "Verdana", 10, this->textColor);
 }
 
 CNotification::~CNotification() {

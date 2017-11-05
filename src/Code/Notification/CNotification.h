@@ -10,17 +10,19 @@
 #include "../BaseClasses/CEntity.h"
 #include "../BaseClasses/CDrawable.h"
 #include <SFML/Graphics.hpp>
+#include <string>
+using namespace std;
 
 class CNotification {
 public:
-	char* message;
+	string message;
 	int time, timeOn;
 	sf::RectangleShape shape;
 	sf::Color rectColor;
 	sf::Color textColor;
 	void SetY(float y);
 	float GetY();
-	CNotification(char* message, int time, sf::Color rectColor = sf::Color::Black, sf::Color textColor = sf::Color::White);
+	CNotification(string message, int time, sf::Color rectColor = sf::Color::Black, sf::Color textColor = sf::Color::White);
 	void Render();
 	void Update();
 	bool IsDone();

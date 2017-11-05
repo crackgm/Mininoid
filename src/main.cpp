@@ -20,5 +20,6 @@ int main()
 
     GameManager::UpdateGame();
 
+    GameManager::FinalizeGame();
     return 0;
 }

@@ -16,7 +16,7 @@ public:
 	static sf::RenderWindow *Window;
 	static void UpdateGame();
 	static void InitializeGame();
-
+	static void FinalizeGame();
 	class Variables {
 	public:
 		static int Framerate;

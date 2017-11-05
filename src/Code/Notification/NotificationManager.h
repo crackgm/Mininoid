@@ -20,7 +20,7 @@ public:
 	NotificationManager();
 	static void Update();
 	static void Render();
-	static void Notify(char* message, int time);
+	static void Notify(string message, int time);
 	virtual ~NotificationManager();
 };
 

@@ -11,6 +11,8 @@
 #include "../Effects/ETextComeFromLeft.h"
 #include "../Effects/ETextLeaveToLeft.h"
 #include "../Effects/ETextBounce.h"
+#include "../Achievements/AchievementManager.h"
+
 #include <sstream>
 #include <string>
 #include <iostream>
@@ -36,7 +38,9 @@ void OComboDrawer::Update() {
 		this->text.str("");
 		this->text << "COMBO X" << OComboDrawer::ComboCounter << "!";
 		this->txt->text = this->text.str();
-
+		if(OComboDrawer::ComboCounter == 2) {
+			AchievementManager::GainAchievement("combo2");
+		}
 		if(this->lastcombo != OComboDrawer::ComboCounter && OComboDrawer::ComboCounter > 2) {
 			new ETextBounce(txt,2);
 		}

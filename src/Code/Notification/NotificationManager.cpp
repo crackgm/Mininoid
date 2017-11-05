@@ -19,7 +19,7 @@ NotificationManager::NotificationManager() {
 
 }
 
-void NotificationManager::Notify(char* message, int time) {
+void NotificationManager::Notify(string message, int time) {
 	NotificationManager::notifications.push_back(new CNotification(message,time));
 }
 

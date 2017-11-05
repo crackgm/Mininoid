@@ -11,6 +11,7 @@
 #include "../BaseClasses/CCollidable.h"
 #include "../BaseClasses/CEffect.h"
 #include "../Notification/NotificationManager.h"
+#include "../Achievements/AchievementManager.h"
 
 #include <iostream>
 #include <queue>
@@ -26,7 +27,7 @@ void GameManager::InitializeGame() {
 	GameManager::Window = new sf::RenderWindow(sf::VideoMode(GameManager::Variables::WindowWidth, GameManager::Variables::WindowHeight), "Mininoid!", sf::Style::Close|sf::Style::Titlebar);
 	GameManager::Window->setFramerateLimit(GameManager::Variables::Framerate);
 	GameManager::Window->setPosition(sf::Vector2i(sf::VideoMode::getDesktopMode().width/2-GameManager::Variables::WindowWidth/2, sf::VideoMode::getDesktopMode().height/2-GameManager::Variables::WindowHeight/2));
-
+	AchievementManager::Initialize();
 }
 
 void GameManager::UpdateGame() {
@@ -113,5 +114,9 @@ void GameManager::HandleCollisions() {
 			q.pop();
 		}
 
+}
+
+void GameManager::FinalizeGame() {
+	AchievementManager::UpdateAchievements();
 }
 
