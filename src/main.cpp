@@ -9,13 +9,13 @@ int main()
 {
 	srand(time(NULL));
     GameManager::InitializeGame();
-    TextureManager::LoadTexture("Resources/texPaddle.png","paddle");
-    TextureManager::LoadTexture("Resources/texBlock.png","block");
-    TextureManager::LoadTexture("Resources/texBall.png","ball");
-    TextureManager::LoadTexture("Resources/background.jpg","background",true);
+    TextureManager::LoadTexture("Resources/paddle.png","paddle", false);
+    TextureManager::LoadTexture("Resources/block.png","block", false);
+    TextureManager::LoadTexture("Resources/ball.png","ball", false);
+    TextureManager::LoadTexture("Resources/background.png","background",true);
 
 
-    FontManager::LoadFont("Verdana.ttf", "Verdana");
+    FontManager::LoadFont("Resources/Verdana.ttf", "Verdana");
     StateManager::PushState(new TestState());
 
     GameManager::UpdateGame();

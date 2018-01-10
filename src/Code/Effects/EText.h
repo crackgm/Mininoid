@@ -14,9 +14,9 @@
 using namespace std;
 class EText : public CDrawable, CEntity {
 public:
-	EText(string text, float x, float y, char* font, int size, sf::Color color, int alpha = 255, bool centered=true);
+	EText(string text, float x, float y, string font, int size, sf::Color color, int alpha = 255, bool centered=true);
 	string text;
-	char *font;
+	string font;
 	float x, y;
 	int size, alpha;
 	sf::Color color;

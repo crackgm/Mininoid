@@ -7,26 +7,26 @@
 
 #include "../Managers.h"
 
-map<char*,sf::Texture*> TextureManager::TextureMap;
+map<string,sf::Texture*> TextureManager::TextureMap;
 
-sf::Texture* TextureManager::GetTexture(char* name) {
+sf::Texture* TextureManager::GetTexture(string name) {
 	return TextureManager::TextureMap[name];
 }
 
-bool TextureManager::LoadTexture(char* path, char* texname) {
+bool TextureManager::LoadTexture(string path, string texname) {
 	sf::Texture *tex = new sf::Texture();
 	bool res = tex->loadFromFile(path);
 	tex->setSmooth(true);
-	TextureManager::TextureMap.insert(pair<char*,sf::Texture*>(texname,tex));
+	TextureManager::TextureMap.insert(pair<string,sf::Texture*>(texname,tex));
 	return res;
 }
 
 
-bool TextureManager::LoadTexture(char* path, char* texname, bool repeat) {
+bool TextureManager::LoadTexture(string path, string texname, bool repeat) {
 	sf::Texture *tex = new sf::Texture();
 	bool res = tex->loadFromFile(path);
 	tex->setSmooth(true);
 	tex->setRepeated(repeat);
-	TextureManager::TextureMap.insert(pair<char*,sf::Texture*>(texname,tex));
+	TextureManager::TextureMap.insert(pair<string,sf::Texture*>(texname,tex));
 	return res;
 }

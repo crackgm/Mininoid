@@ -55,7 +55,6 @@ class TestState: public CState {
 		FontManager::DrawText(GameManager::Variables::KeyboardInput, 10, 10, "Verdana", 10, sf::Color::White);
 	}
 	virtual ~TestState() {
-		delete []blocks;
 		delete left;
 		delete right;
 		delete paddle;

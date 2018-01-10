@@ -14,11 +14,11 @@ using namespace std;
 
 class TextureManager {
 private:
-	static map<char*,sf::Texture*> TextureMap;
+	static map<string,sf::Texture*> TextureMap;
 public:
-	static bool LoadTexture(char* path, char* texname);
-	static bool LoadTexture(char* path, char* texname, bool repeat);
-	static sf::Texture* GetTexture(char* name);
+	static bool LoadTexture(string path, string texname);
+	static bool LoadTexture(string path, string texname, bool repeat);
+	static sf::Texture* GetTexture(string name);
 };
 
 #endif /* CODE_MANAGERS_TEXTUREMANAGER_H_ */

@@ -13,7 +13,7 @@
 
 using namespace std;
 
-EText::EText(string text, float x, float y, char* font, int size, sf::Color color, int alpha, bool centered) {
+EText::EText(string text, float x, float y, string font, int size, sf::Color color, int alpha, bool centered) {
 	this->text = text;
 	this->x = x;
 	this->y = y;
