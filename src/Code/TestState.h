@@ -29,8 +29,11 @@ class TestState: public CState {
 	OBall *ball;
 	OComboDrawer *cdrawer;
 	sf::RectangleShape shape;
+	sf::RenderTexture background;
+	float xx=0;
 	void Create() {
 		NotificationManager::Notify("Playing on: TestState", 10);
+		background.create(800,600);
 
 
 		paddle = new OPaddle();
@@ -42,15 +45,34 @@ class TestState: public CState {
 		right = new OMargin(800-42.5);
 		ball = new OBall(400,500);
 		cdrawer = new OComboDrawer();
-		shape.setTexture(TextureManager::GetTexture("background"));
-		shape.setSize(sf::Vector2f(800,600));
-		shape.setPosition(sf::Vector2f(0,0));
+
+
 
 	}
 	void Update(){
+		xx+=0.25f;
+		if(xx>=126) xx = 0;
 		AchievementManager::ProgressAchievement("timeplayed1",1);
+
 	}
 	void Render(){
+		background.clear(sf::Color::Red);
+						shape.setSize(sf::Vector2f(128,128));
+						shape.setTexture(TextureManager::GetTexture("background"),true);
+
+
+						for(int i = -1; i < 800/128+1; i++) {
+							for(int j = -1; j < 600/128+1; j++) {
+
+								shape.setPosition(i*126+xx*-1, j*126+xx);
+								background.draw(shape);
+							}
+						}
+						background.display();
+						shape.setSize(sf::Vector2f(800,600));
+						shape.setTexture(&background.getTexture(),true);
+						shape.setPosition(sf::Vector2f(0,0));
+
 		GameManager::Window->draw(shape);
 		FontManager::DrawText(GameManager::Variables::KeyboardInput, 10, 10, "Verdana", 10, sf::Color::White);
 	}
