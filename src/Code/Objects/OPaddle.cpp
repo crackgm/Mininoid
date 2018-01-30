@@ -48,6 +48,9 @@ void OPaddle::HandleCollision(string name, CCollidable *other) {
 		for(int i=0; i < 5; i++) {
 			new ESpark(other->colshape.left+other->colshape.width/2, shape.getPosition().y, 2, 20, 2, 190+ rand()%160, sf::Color::Yellow);
 		}
+	} else if (name=="powerup") {
+
+		delete other;
 	}
 }
 
